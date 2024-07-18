@@ -4,15 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Pet } from './services/generated/petstore'
 import { PetTable } from './components/PetTable'
-import { usePetstoreService } from './services/petstore'
+import { usePetstoreApis } from './services/context'
 
 function App() {
-  const petstoreService = usePetstoreService();
+  const { petApi } = usePetstoreApis();
   const [count, setCount] = useState(0)
   const [pets, setPets] = useState<Array<Pet>>([])
 
   const fetchPets = async () => {
-    const pets = await petstoreService.petApi.findPetsByStatus({
+    const pets = await petApi.findPetsByStatus({
       status: ["available"]
     })
     setPets(pets);

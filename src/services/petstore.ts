@@ -1,19 +1,12 @@
-import { createContext, useContext } from 'react';
 import { Configuration, ConfigurationParameters, PetApi, StoreApi, UserApi } from './generated/petstore';
 
-interface PetstoreService {
+export interface PetstoreApis {
   petApi: PetApi;
   storeApi: StoreApi;
   userApi: UserApi;
 }
 
-export const PetstoreServiceContext = createContext<PetstoreService>(null!);
-
-export function usePetstoreService() {
-  return useContext(PetstoreServiceContext);
-}
-
-export function createPetstoreService(configParams?: ConfigurationParameters): PetstoreService {
+export function createPetstoreApis(configParams?: ConfigurationParameters): PetstoreApis {
   const config = new Configuration(configParams);
   return {
     petApi: new PetApi(config),

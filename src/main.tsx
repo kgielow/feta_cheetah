@@ -2,16 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { createPetstoreService, PetstoreServiceContext } from './services/petstore.ts'
+import { createPetstoreApis } from './services/petstore.ts'
+import { ServiceApisContext } from './services/context.ts'
 
-const petstoreService = createPetstoreService({
-  basePath: "http://petstore.swagger.io/v2"
-});
+const serviceApis = {
+  petstore: createPetstoreApis({
+    basePath: "http://petstore.swagger.io/v2"
+  }),
+  // other sets of apis that are generated together in ./src/services/generated
+};
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <PetstoreServiceContext.Provider value={petstoreService}>
+    <ServiceApisContext.Provider value={serviceApis}>
       <App />
-    </PetstoreServiceContext.Provider>
+    </ServiceApisContext.Provider>
   </React.StrictMode>,
 )
