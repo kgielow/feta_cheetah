@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { createPetstoreService, PetstoreServiceContext } from './services/petstore.ts'
 
-const petstoreService = createPetstoreService({ 
+const petstoreService = createPetstoreService({
   basePath: "http://petstore.swagger.io/v2"
 });
 

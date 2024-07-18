@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Pet } from './services/generated/petstore'
 import { PetTable } from './components/PetTable'
-import { PetstoreServiceContext, usePetstoreService } from './services/petstore'
+import { usePetstoreService } from './services/petstore'
 
 function App() {
   const petstoreService = usePetstoreService();
